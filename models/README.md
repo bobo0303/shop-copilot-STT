@@ -1,3 +1,5 @@
+目前只使用 paraformer-zh 和 SenseVoiceSmall (默認) 自己下載放在這裡
+
 (Note: ⭐ represents the ModelScope model zoo, 🤗 represents the Huggingface model zoo, 🍀 represents the OpenAI model zoo)
 
 
