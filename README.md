@@ -1,5 +1,7 @@
 [//]: # (<div align="left"><img src="docs/images/funasr_logo.jpg" width="400"/></div>)
 
+private use
+
 ([简体中文](./README_zh.md)|English)
 
 [//]: # (# FunASR: A Fundamental End-to-End Speech Recognition Toolkit)
