@@ -1,0 +1,133 @@
+data_file,gt,predict,wer
+asr_data/Jake/1/add.wav,add,add,0.0
+asr_data/Jake/1/back.wav,back,back,0.0
+asr_data/Jake/1/done.wav,done,done,0.0
+asr_data/Jake/1/go payment.wav,go payment,go payment,0.0
+asr_data/Jake/1/hi.wav,hi,hi,0.0
+asr_data/Jake/1/home.wav,home,home,0.0
+asr_data/Jake/1/next time.wav,next time,next time,0.0
+asr_data/Jake/1/next.wav,next,next,0.0
+asr_data/Jake/1/nfc.wav,nfc,nfc,0.0
+asr_data/Jake/1/setting.wav,setting,seeen,1.0
+asr_data/Jake/1/show coupon.wav,show coupon,show coupon,0.0
+asr_data/Jake/1/use coupon.wav,use coupon,use coupon,0.0
+asr_data/Jake/1/use now.wav,use now,use now,0.0
+asr_data/Jake/2/add.wav,add,add,0.0
+asr_data/Jake/2/back.wav,back,back,0.0
+asr_data/Jake/2/done.wav,done,done,0.0
+asr_data/Jake/2/go payment.wav,go payment,go payment,0.0
+asr_data/Jake/2/hi.wav,hi,hi,0.0
+asr_data/Jake/2/home.wav,home,home,0.0
+asr_data/Jake/2/next time.wav,next time,next time,0.0
+asr_data/Jake/2/next.wav,next,next,0.0
+asr_data/Jake/2/nfc.wav,nfc,nfc,0.0
+asr_data/Jake/2/setting.wav,setting,seeen,1.0
+asr_data/Jake/2/show coupon.wav,show coupon,show coupon,0.0
+asr_data/Jake/2/use coupon.wav,use coupon,use coupon,0.0
+asr_data/Jake/2/use now.wav,use now,use now,0.0
+asr_data/Bobo/1/back.wav,back,back,0.0
+asr_data/Bobo/1/hi.wav,hi,hi,0.0
+asr_data/Bobo/1/home.wav,home,home,0.0
+asr_data/Bobo/1/next.wav,next,next,0.0
+asr_data/Bobo/1/NFC.wav,nfc,nfc,0.0
+asr_data/Bobo/1/use coupon.wav,use coupon,use coupon,0.0
+asr_data/Bobo/1/setting.wav,setting,sstateet it,2.0
+asr_data/Bobo/1/use now.wav,use now,use now,0.0
+asr_data/Bobo/1/go payment.wav,go payment,go payment,0.0
+asr_data/Bobo/1/done.wav,done,done,0.0
+asr_data/Bobo/1/Add.wav,add,add,0.0
+asr_data/Bobo/1/Show coupon.wav,show coupon,show coupon,0.0
+asr_data/Bobo/2/add.wav,add,eight,1.0
+asr_data/Bobo/2/go payment.wav,go payment,go payment,0.0
+asr_data/Bobo/2/done.wav,done,done,0.0
+asr_data/Bobo/2/back.wav,back,back,0.0
+asr_data/Bobo/2/hi.wav,hi,hi,0.0
+asr_data/Bobo/2/home.wav,home,home,0.0
+asr_data/Bobo/2/next.wav,next,next,0.0
+asr_data/Bobo/2/setting.wav,setting,setting,0.0
+asr_data/Bobo/2/NFC.wav,nfc,nfc,0.0
+asr_data/Bobo/2/next time.wav,next time,next time,0.0
+asr_data/Bobo/2/Add.wav,add,add,0.0
+asr_data/Bobo/2/Use now.wav,use now,use now,0.0
+asr_data/Bobo/2/Use coupon.wav,use coupon,use coupon,0.0
+asr_data/Bobo/2/Show coupon.wav,show coupon,show coupon,0.0
+asr_data/MH/1/Done.wav,done,done,0.0
+asr_data/MH/1/go payment.wav,go payment,go payment,0.0
+asr_data/MH/1/Hi.wav,hi,hi,0.0
+asr_data/MH/1/Home.wav,home,home,0.0
+asr_data/MH/1/Next time.wav,next time,next time,0.0
+asr_data/MH/1/Next.wav,next,next,0.0
+asr_data/MH/1/NFC.wav,nfc,nfc,0.0
+asr_data/MH/1/Setting.wav,setting,setting,0.0
+asr_data/MH/1/Show coupon.wav,show coupon,show coupon,0.0
+asr_data/MH/1/Use coupon.wav,use coupon,use coupon,0.0
+asr_data/MH/1/Use now.wav,use now,use now,0.0
+asr_data/MH/1/Add.wav,add,add,0.0
+asr_data/MH/1/Back.wav,back,back,0.0
+asr_data/MH/2/add.wav,add,add,0.0
+asr_data/MH/2/use now.wav,use now,use now,0.0
+asr_data/MH/2/use coupon.wav,use coupon,use coupon,0.0
+asr_data/MH/2/show coupon.wav,show coupon,show coupon,0.0
+asr_data/MH/2/back.wav,back,back,0.0
+asr_data/MH/2/done.wav,done,done,0.0
+asr_data/MH/2/Go payment.wav,go payment,go payment,0.0
+asr_data/MH/2/hi.wav,hi,hi,0.0
+asr_data/MH/2/home.wav,home,home,0.0
+asr_data/MH/2/next time.wav,next time,next time,0.0
+asr_data/MH/2/next.wav,next,next,0.0
+asr_data/MH/2/setting.wav,setting,setting,0.0
+asr_data/MH/2/NFC.wav,nfc,nfc,0.0
+asr_data/John/1/Add.wav,add,add,0.0
+asr_data/John/1/Back.wav,back,back,0.0
+asr_data/John/1/Done.wav,done,done,0.0
+asr_data/John/1/Go Payment.wav,go payment,go payment,0.0
+asr_data/John/1/Hi.wav,hi,hi,0.0
+asr_data/John/1/Home.wav,home,home,0.0
+asr_data/John/1/NFC.wav,nfc,nfc,0.0
+asr_data/John/1/Next Time.wav,next time,next time,0.0
+asr_data/John/1/Next.wav,next,next,0.0
+asr_data/John/1/Setting.wav,setting,setting,0.0
+asr_data/John/1/Use Coupon.wav,use coupon,use coupon,0.0
+asr_data/John/1/Use Now.wav,use now,use now,0.0
+asr_data/John/1/Show Coupon.wav,show coupon,show coupon,0.0
+asr_data/John/2/Add.wav,add,add,0.0
+asr_data/John/2/Back.wav,back,back,0.0
+asr_data/John/2/Done.wav,done,done,0.0
+asr_data/John/2/Go Payment.wav,go payment,go payment,0.0
+asr_data/John/2/Hi.wav,hi,hi,0.0
+asr_data/John/2/Home.wav,home,home,0.0
+asr_data/John/2/NFC.wav,nfc,l f c,3.0
+asr_data/John/2/Next Time.wav,next time,next time,0.0
+asr_data/John/2/Next.wav,next,next,0.0
+asr_data/John/2/Setting.wav,setting,setting,0.0
+asr_data/John/2/Use Coupon.wav,use coupon,use coupon,0.0
+asr_data/John/2/Use Now.wav,use now,use now,0.0
+asr_data/John/2/Show Coupon.wav,show coupon,show coupon,0.0
+asr_data/Sam/1/Add.wav,add,eight,1.0
+asr_data/Sam/1/Back.wav,back,beg,1.0
+asr_data/Sam/1/Done.wav,done,dumb,1.0
+asr_data/Sam/1/Hi.wav,hi,hi,0.0
+asr_data/Sam/1/Home.wav,home,home,0.0
+asr_data/Sam/1/NFC.wav,nfc,nfc,0.0
+asr_data/Sam/1/Next.wav,next,next,0.0
+asr_data/Sam/1/Setting.wav,setting,seen,1.0
+asr_data/Sam/1/Go Payment.wav,go payment,go payment,0.0
+asr_data/Sam/1/Next Time.wav,next time,next time,0.0
+asr_data/Sam/1/Show Coupon.wav,show coupon,show coupon,0.0
+asr_data/Sam/1/Use Coupon.wav,use coupon,use coupon,0.0
+asr_data/Sam/1/Use Now.wav,use now,use now,0.0
+asr_data/Sam/2/Add.wav,add,add,0.0
+asr_data/Sam/2/Back.wav,back,back,0.0
+asr_data/Sam/2/Done.wav,done,dumb,1.0
+asr_data/Sam/2/Hi.wav,hi,hi,0.0
+asr_data/Sam/2/Home.wav,home,home,0.0
+asr_data/Sam/2/NFC.wav,nfc,nfc,0.0
+asr_data/Sam/2/Next.wav,next,next,0.0
+asr_data/Sam/2/Setting.wav,setting,seeen,1.0
+asr_data/Sam/2/Go payment.wav,go payment,go payment,0.0
+asr_data/Sam/2/Next Time.wav,next time,next time,0.0
+asr_data/Sam/2/Show Coupon.wav,show coupon,show coupon,0.0
+asr_data/Sam/2/Use Coupon.wav,use coupon,use coupon,0.0
+asr_data/Sam/2/Use Now.wav,use now,use now,0.0
+avg,,,0.07821
+Accuracy,91.54%,119,130
