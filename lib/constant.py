@@ -1,11 +1,11 @@
 from pydantic import BaseModel
-import torch
 
 #############################################################################
 
 class ModlePath(BaseModel):
     paraformer: str = "models/paraformer-zh"
     sensevoice: str = "models/SenseVoiceSmall"
+    punc: str = "models/ct-punc"
 
 #############################################################################
 """ options for inference """
@@ -14,6 +14,10 @@ OPTIONS = {
     "itn": True,
     "ban_emo_unk": False,
 }
+
+#############################################################################
+""" options for contral punc or not """
+IS_PUNC = True
 
 #############################################################################
 

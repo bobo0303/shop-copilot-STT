@@ -7,7 +7,7 @@ import torch
 import logging  
 
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
-from lib.constant import ModlePath, OPTIONS
+from lib.constant import ModlePath, OPTIONS, IS_PUNC
 from .text_postprocess import extract_sensevoice_result_text
 from funasr import AutoModel  
 
@@ -20,7 +20,14 @@ class Model:
         """  
 
         self.model = None
+        self.punc_model = None
         self.models_path = ModlePath()
+        self.device = "cuda" if torch.cuda.is_available() else "cpu"
+        self. model_parameter = {"model": None,
+                                 "disable_update": True,
+                                 "disable_pbar": True,
+                                 "device": self.device,            
+                                 }
 
     def load_model(self, model_name):
         """  Load the specified model based on the model's name.  
@@ -45,23 +52,22 @@ class Model:
 
         self._release_model()
         
-        device = "cuda" if torch.cuda.is_available() else "cpu"
         if model_name == "paraformer":
-            self.model = AutoModel(  
-                            model=self.models_path.paraformer,  
-                            disable_update=True,
-                            disable_pbar=True,  
-                            device=device  
-                        )  
+            self.model_parameter['model'] = self.models_path.paraformer
         elif model_name == "sensevoice":
-            self.model = AutoModel(  
-                            model=self.models_path.sensevoice,  
-                            disable_update=True,
-                            disable_pbar=True,  
-                            device=device  
-                        )
+            self.model_parameter['model'] = self.models_path.sensevoice
+        self.model = AutoModel(**self.model_parameter)
         end = time.time()
+                
         print(f"Model '{model_name}' loaded in {end - start:.2f} secomds.")
+
+        if IS_PUNC:
+            start = time.time()
+            print("Start to loading punch model.")
+            self.model_parameter['model'] = self.models_path.punc
+            self.punc_model = AutoModel(**self.model_parameter)
+            end = time.time()
+            print(f"Model \'ct-punc\' loaded in {end - start:.2f} secomds.")
 
     def _release_model(self):  
         """    
@@ -107,6 +113,9 @@ class Model:
         start = time.time()
         result = self.model.generate(audio_file_path, **OPTIONS)
         ori_pred = result[0]['text']
+        if IS_PUNC:
+            ori_pred = self.punc_model.generate(input=ori_pred)
+            ori_pred = ori_pred[0]['text']
         end = time.time()
         inference_time = end-start
         start = time.time()

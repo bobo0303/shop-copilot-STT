@@ -2,11 +2,9 @@ from fastapi import FastAPI, HTTPException, UploadFile, File
 import os  
 import time
 import pytz  
-import torch  
 import logging  
 import uvicorn  
 import datetime  
-import schedule  
 from threading import Thread, Event
 from api.model import Model  
 from lib.data_object import LoadModelRequest  
@@ -51,24 +49,24 @@ async def load_default_model_preheat():
     ----------  
     Loading and preheating status and times  
     """  
-    logger.info("#####################################################")  
-    logger.info(f"Start to loading default model.")  
+    print("#####################################################")  
+    print(f"Start to loading default model.")  
     # load model  
     default_model = "sensevoice" 
     
     model.load_model(default_model)
-    logger.info(f"Default model {default_model} has been loaded successfully.")  
+    print(f"Default model {default_model} has been loaded successfully.")  
 
     # preheat  
-    logger.info(f"Start to preheat model.")  
+    print(f"Start to preheat model.")  
     default_audio = "audio/test.wav"  
     start = time.time()  
     for _ in range(5):  
         result, _ = model.transcribe(default_audio)  
-        print(f"transcription: {result['transcription']}\n=== hotword: {result['hotword']}\n=== command number: {result['command number']}")  
+        print(f"transcription: {result}")  
     end = time.time()  
-    logger.info(f"Preheat model has been completed in {end - start:.2f} seconds.")  
-    logger.info("#####################################################")  
+    print(f"Preheat model has been completed in {end - start:.2f} seconds.")  
+    print("#####################################################")  
   
 # load model endpoint  
 @app.post("/load_model")  
@@ -118,7 +116,7 @@ async def transcribe(file: UploadFile = File(...)):
     """  
     # Get the file name  
     file_name = file.filename  
-    logger.info(f"requist ID name {file_name}.")
+    print(f"requist ID name {file_name}.")
 
     start = time.time()  
     default_result = {"action_code": -1}  
@@ -130,7 +128,7 @@ async def transcribe(file: UploadFile = File(...)):
         f.write(file.file.read())  
   
     if not os.path.exists(audio_buffer):  
-        logger.info("The audio file does not exist, please check the audio path.")  
+        print("The audio file does not exist, please check the audio path.")  
         return BaseResponse(message={"inference failed!"}, data=default_result)  
     
     end = time.time()  
@@ -138,8 +136,9 @@ async def transcribe(file: UploadFile = File(...)):
   
     start = time.time()  
     result, inference_time = model.transcribe(audio_buffer)  
-    logger.info(f"inference has been completed in {inference_time:.2f} seconds.")  
-    logger.info(f"transcription: {result['transcription']}\n=== hotword: {result['hotword']}\n=== command number: {result['command number']}")
+    
+    print(f"inference has been completed in {inference_time:.2f} seconds.")  
+    print(f"transcription: {result}")  
 
     end = time.time()  
     total_inference_time = end - start  
@@ -152,8 +151,8 @@ async def transcribe(file: UploadFile = File(...)):
     remove_audio_time = end - start  
     logger.debug(f"save_audio: {save_audio_time} seconds, total_inference_time: {total_inference_time}, remove_audio_time: {remove_audio_time}.")  
   
-    output_message = f"transcription: {result['transcription']} | hotword: action_code: {result['hotword']['action_code']}"  
-    return BaseResponse(message=output_message, data=result['command number'])  
+    output_message = f"transcription: {result}"  
+    return BaseResponse(message=output_message, data=result)  
   
 # 清理音频文件  
 def delete_old_audio_files():  
@@ -183,7 +182,7 @@ def delete_old_audio_files():
             # 删除超过一天的文件  
             if current_time - file_creation_time > 24 * 60 * 60:  
                 os.remove(file_path)  
-                logger.info(f"Deleted old file: {file_path}")  
+                print(f"Deleted old file: {file_path}")  
 
 def schedule_daily_task(stop_event):  
     while not stop_event.is_set():  
@@ -201,10 +200,10 @@ task_thread.start()
 def shutdown_event():  
     stop_event.set()  
     task_thread.join()  
-    logger.info("Scheduled task has been stopped.") 
+    print("Scheduled task has been stopped.") 
   
 if __name__ == "__main__":  
-    port = int(os.environ.get("PORT", 52001))  
+    port = int(os.environ.get("PORT", 80))  
     uvicorn.config.LOGGING_CONFIG["formatters"]["default"]["fmt"] = "%(asctime)s [%(name)s] %(levelprefix)s %(message)s"  
     uvicorn.config.LOGGING_CONFIG["formatters"]["access"]["fmt"] = '%(asctime)s [%(name)s] %(levelprefix)s %(client_addr)s - "%(request_line)s" %(status_code)s'  
     uvicorn.run(app, log_level='info', host='0.0.0.0', port=port)  
