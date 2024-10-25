@@ -17,9 +17,10 @@ if not os.path.exists("./audio"):
     os.mkdir("./audio")  
   
 # 配置日志记录  
-log_format = "%(asctime)s - %(message)s"  # 输出时间戳和消息内容  
-logging.basicConfig(level=logging.INFO, format=log_format)  # ['DEBUG', 'INFO']  
+# log_format = "%(asctime)s - %(message)s"  # 输出时间戳和消息内容  
+# logging.basicConfig(level=logging.INFO, format=log_format)  # ['DEBUG', 'INFO']  
 logger = logging.getLogger(__name__)
+logger.setLevel(logging.INFO)
 # 配置 utc+8 時間
 utc_now = datetime.datetime.now(pytz.utc)  
 tz = pytz.timezone('Asia/Taipei')  
@@ -54,8 +55,7 @@ async def load_default_model_preheat():
     logger.info("#####################################################")  
     logger.info(f"Start to loading default model.")  
     # load model  
-    default_model = "sensevoice" 
-    
+    default_model = "sensevoice"  # sensevoice or paraformer
     model.load_model(default_model)
     logger.info(f"Default model {default_model} has been loaded successfully.")  
 
@@ -63,9 +63,12 @@ async def load_default_model_preheat():
     logger.info(f"Start to preheat model.")  
     default_audio = "audio/test.wav"  
     start = time.time()  
-    for _ in range(5):  
+    for i in range(5):  
+        
         result, _ = model.transcribe(default_audio)  
-        print(f"transcription: {result['transcription']}\n=== hotword: {result['hotword']}\n=== command number: {result['command number']}")  
+        print(f"preheat model: {i+1} times")
+        # print(f"transcription: {result['transcription']}\n=== hotword: {result['hotword']}\n=== command number: {result['command number']}")  
+        time.sleep(0.5)
     end = time.time()  
     logger.info(f"Preheat model has been completed in {end - start:.2f} seconds.")  
     logger.info("#####################################################")  
@@ -204,7 +207,7 @@ def shutdown_event():
     logger.info("Scheduled task has been stopped.") 
   
 if __name__ == "__main__":  
-    port = int(os.environ.get("PORT", 52001))  
+    port = int(os.environ.get("PORT", 80))  
     uvicorn.config.LOGGING_CONFIG["formatters"]["default"]["fmt"] = "%(asctime)s [%(name)s] %(levelprefix)s %(message)s"  
     uvicorn.config.LOGGING_CONFIG["formatters"]["access"]["fmt"] = '%(asctime)s [%(name)s] %(levelprefix)s %(client_addr)s - "%(request_line)s" %(status_code)s'  
     uvicorn.run(app, log_level='info', host='0.0.0.0', port=port)  
